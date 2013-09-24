@@ -28,7 +28,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 @ComponentScan(basePackages = "hu.legare.contextconfig", useDefaultFilters = false, includeFilters = @Filter(org.springframework.stereotype.Controller.class))
 @EnableWebMvc
-public class ServletContext extends WebMvcConfigurerAdapter {
+public class DispatcherServletContext extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

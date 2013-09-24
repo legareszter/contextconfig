@@ -17,6 +17,7 @@
 
 		<!-- Web -->
 		<spring.js.resources.version>2.3.2.RELEASE</spring.js.resources.version>
+		<javax.servlet.version>3.1.0</javax.servlet.version>
 
 		<!-- Spring -->
 		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
@@ -30,7 +31,6 @@
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
 		<hibernate.validator.version>5.0.1.Final</hibernate.validator.version>
 		<javax.transaction.version>1.1</javax.transaction.version>
-
 
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
@@ -74,8 +74,7 @@
 			<version>${spring-framework.version}</version>
 		</dependency>
 
-		<!-- Spring WebMvc -->
-
+		<!-- Spring Web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -85,6 +84,13 @@
 			<groupId>org.springframework.webflow</groupId>
 			<artifactId>spring-js-resources</artifactId>
 			<version>${spring.js.resources.version}</version>
+		</dependency>
+
+		<!-- Other Web -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.version}</version>
 		</dependency>
 
 		<!-- Logging with SLF4J & LogBack -->
