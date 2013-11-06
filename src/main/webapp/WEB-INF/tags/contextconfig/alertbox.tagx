@@ -1,0 +1,51 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+  xmlns:spring="http://www.springframework.org/tags"
+  xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+  <jsp:output omit-xml-declaration="yes" />
+
+  <jsp:directive.attribute name="alertclass" type="java.lang.String"
+    required="false" rtexprvalue="true"
+    description="Bootstrap alert classname: alert-success, alert-danger, alert-error, alert-info, alert-block." />
+  <jsp:directive.attribute name="messagecode" type="java.lang.String"
+    required="false" rtexprvalue="true"
+    description="Code of the message (in the property file)." />
+  <jsp:directive.attribute name="messagearguments" type="java.lang.String"
+    required="false" rtexprvalue="true"
+    description="Comma-delimited string arguments of the message." />
+  <jsp:directive.attribute name="message" type="java.lang.String"
+    required="false" rtexprvalue="true"
+    description="The message (if it's not in a property file)." />
+  <jsp:directive.attribute name="spanlength" type="java.lang.Integer"
+    required="false" rtexprvalue="true"
+    description="Length of the span with the message. Range: 1-12. Default: 12 - 'offsetmeasure'. The sum of spanlength and offsetmeasure has to be 12." />
+  <jsp:directive.attribute name="offsetmeasure" type="java.lang.Integer"
+    required="false" rtexprvalue="true"
+    description="Measure of the offset of the span with the message. Range: 1-12. Default:0. The sum of spanlength and offsetmeasure has to be 12." />
+
+  <c:if test="${empty offsetmeasure}">
+    <c:set var="offsetmeasure" value="0" />
+  </c:if>
+  <c:if test="${empty spanlength}">
+    <c:set var="spanlength" value="${12 - offsetmeasure}" />
+  </c:if>
+  <c:set var="spanclass" value="span${spanlength}" />
+  <c:if test="${offsetmeasure > 0}">
+    <c:set var="spanclass" value="offset${offsetmeasure} ${spanclass}"></c:set>
+  </c:if>
+
+  <div class="${spanclass}">
+    <p class="alert ${alertclass}">
+      <c:choose>
+        <c:when test="${not empty messagecode}">
+          <spring:message code="${messagecode}" htmlEscape="false"
+            arguments="${messagearguments}" />
+        </c:when>
+        <c:otherwise>
+          <c:out value="${message}" escapeXml="true" />
+        </c:otherwise>
+      </c:choose>
+    </p>
+  </div>
+
+</jsp:root>

@@ -1,0 +1,15 @@
+<div xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:ctxconf="urn:jsptagdir:/WEB-INF/tags/contextconfig"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<div class="standalone">
+		<util:panel id="resource_not_found_pane">
+			<ctxconf:alertbox alertclass="alert-error"
+				messagecode="resource_not_found_message" />
+		</util:panel>
+	</div>
+</div>

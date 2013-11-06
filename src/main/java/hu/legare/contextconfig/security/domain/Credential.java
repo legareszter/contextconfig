@@ -1,4 +1,4 @@
-package hu.legare.contextconfig.security;
+package hu.legare.contextconfig.security.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
