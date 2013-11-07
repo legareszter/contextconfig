@@ -1,5 +1,7 @@
 package hu.legare.contextconfig.security.domain;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -24,5 +26,10 @@ public class DatabaseCredentialRepository implements CredentialRepository {
     public Credential findByLogin(String login) {
         return entityManager.createQuery("SELECT c FROM Credential c WHERE c.login = :login", Credential.class)
                 .setParameter("login", login).getSingleResult();
+    }
+
+    @Override
+    public List<Credential> findAll() {
+        return entityManager.createQuery("SELECT c FROM Credential c", Credential.class).getResultList();
     }
 }

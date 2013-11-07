@@ -3,7 +3,7 @@ package hu.legare.contextconfig.security.mvc;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class newCredential {
+public class NewCredential {
 
     @NotNull
     @Size(min = 8, max = 100)
@@ -13,9 +13,12 @@ public class newCredential {
     @Size(min = 8, max = 50)
     public String password;
 
-    public newCredential(String login, String password) {
+    public NewCredential(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public NewCredential() {
     }
 
     public String getLogin() {

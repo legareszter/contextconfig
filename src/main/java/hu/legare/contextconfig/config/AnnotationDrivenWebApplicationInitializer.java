@@ -2,16 +2,14 @@ package hu.legare.contextconfig.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
-import javax.servlet.http.HttpServlet;
 
-import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class AnnotationDrivenWebApplicationInitializer implements WebApplicationInitializer {
+public class AnnotationDrivenWebApplicationInitializer /*implements WebApplicationInitializer*/{
 
-    @Override
+    // @Override
     public void onStartup(ServletContext container) {
         // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
@@ -29,8 +27,5 @@ public class AnnotationDrivenWebApplicationInitializer implements WebApplication
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
 
-        ServletRegistration.Dynamic htmlJspMapper = container.addServlet("jsp", );
-        htmlJspMapper.setLoadOnStartup(1);
-        htmlJspMapper.addMapping("*.html");
     }
 }

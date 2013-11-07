@@ -22,6 +22,11 @@ public class Credential {
     @Column(nullable = false, length = 255)
     private String password;
 
+    public Credential(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     Integer getId() {
         return id;
     }
