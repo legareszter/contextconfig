@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.LocaleResolver;
@@ -25,11 +26,15 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 
-@Configuration
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
-@ComponentScan(basePackages = "hu.legare.contextconfig", useDefaultFilters = false, includeFilters = @Filter(org.springframework.stereotype.Controller.class))
+@ComponentScan(basePackages = "hu.legare.contextconfig", excludeFilters = @Filter(Configuration.class), includeFilters = @Filter(Controller.class))
 @EnableWebMvc
+@Configuration
 public class DispatcherServletContext extends WebMvcConfigurerAdapter {
+
+    public DispatcherServletContext() {
+        System.out.println("DispatcherServletContext");
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

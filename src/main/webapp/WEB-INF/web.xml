@@ -7,6 +7,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 
 	<display-name>contextconfig</display-name>
 
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
@@ -15,10 +19,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<param-name>contextConfigLocation</param-name>
 		<param-value>hu.legare.contextconfig.config.ApplicationContext</param-value>
 	</context-param>
-
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
 
 
 	<!-- - Servlet that dispatches request to registered handlers (Controller 
@@ -32,7 +32,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>hu.legare.contextconfig.config.ServletContext</param-value>
+			<param-value>hu.legare.contextconfig.config.DispatcherServletContext</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
