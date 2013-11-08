@@ -16,23 +16,21 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.instrument.classloading.LoadTimeWeaver;
+import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
+import org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@Configuration
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 @ComponentScan(basePackages = "hu.legare.contextconfig", excludeFilters = { @Filter(Configuration.class), @Filter(Controller.class) })
-@Configuration
 public class ApplicationContext {
-
-    public ApplicationContext() {
-        System.out.println("ApplicationContext");
-    }
 
     @Bean
     public DataSource dataSource() {
@@ -58,6 +56,7 @@ public class ApplicationContext {
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPackagesToScan("hu.legare.contextconfig");
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter());
+        entityManagerFactoryBean.setJpaDialect(jpaDialect());
         entityManagerFactoryBean.setLoadTimeWeaver(loadTimeWeaver());
 
         entityManagerFactoryBean.afterPropertiesSet();
@@ -87,9 +86,13 @@ public class ApplicationContext {
 
     private JpaVendorAdapter vendorAdapter() {
         EclipseLinkJpaVendorAdapter jpaVendorAdapter = new EclipseLinkJpaVendorAdapter();
-        jpaVendorAdapter.setShowSql(false);
+        jpaVendorAdapter.setShowSql(true);
         jpaVendorAdapter.setDatabasePlatform(TargetDatabase.PostgreSQL);
         return jpaVendorAdapter;
+    }
+
+    private JpaDialect jpaDialect() {
+        return new EclipseLinkJpaDialect();
     }
 
     private LoadTimeWeaver loadTimeWeaver() {

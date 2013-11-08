@@ -26,15 +26,11 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 
+@Configuration
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 @ComponentScan(basePackages = "hu.legare.contextconfig", excludeFilters = @Filter(Configuration.class), includeFilters = @Filter(Controller.class))
 @EnableWebMvc
-@Configuration
 public class DispatcherServletContext extends WebMvcConfigurerAdapter {
-
-    public DispatcherServletContext() {
-        System.out.println("DispatcherServletContext");
-    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -67,8 +63,8 @@ public class DispatcherServletContext extends WebMvcConfigurerAdapter {
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasenames("WEB-INF/i18n/messages", "WEB-INF/i18n/application");
-        messageSource.setFallbackToSystemLocale(false);
-        return messageSource();
+        messageSource.setUseCodeAsDefaultMessage(true);
+        return messageSource;
     }
 
     @Bean

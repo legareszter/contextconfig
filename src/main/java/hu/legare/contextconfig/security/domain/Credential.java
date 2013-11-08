@@ -22,6 +22,9 @@ public class Credential {
     @Column(nullable = false, length = 255)
     private String password;
 
+    public Credential() {
+    }
+
     public Credential(String login, String password) {
         this.login = login;
         this.password = password;

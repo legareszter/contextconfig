@@ -42,10 +42,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jetty.version>8.0.1.v20110908</jetty.version>
-		<tomcat.version>1.1</tomcat.version>
 
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
-		<aspectj.version>1.5.4</aspectj.version>
+		<aspectj.version>1.6.12</aspectj.version>
 		<cglib.version>3.0</cglib.version>
 
 		<!-- Web -->
@@ -134,11 +133,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.webflow</groupId> -->
-<!-- 			<artifactId>spring-js-resources</artifactId> -->
-<!-- 			<version>${spring.js.resources.version}</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.webflow</groupId> -->
+		<!-- <artifactId>spring-js-resources</artifactId> -->
+		<!-- <version>${spring.js.resources.version}</version> -->
+		<!-- </dependency> -->
 
 		<!-- Other Web -->
 
@@ -292,6 +291,20 @@
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat6-maven-plugin</artifactId>
+					<version>2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -355,11 +368,6 @@
 					<downloadJavadocs>false</downloadJavadocs>
 					<wtpversion>2.0</wtpversion>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
-				<version>${tomcat.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
