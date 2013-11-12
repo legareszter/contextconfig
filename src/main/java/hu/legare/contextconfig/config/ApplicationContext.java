@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 
 @Configuration
 @ComponentScan(basePackages = "hu.legare.contextconfig", excludeFilters = { @Filter(Configuration.class), @Filter(Controller.class) })
-@Import({ ExternalDataSource.class, DefaultJpaConfig.class, HibernateOrmConfig.class })
+@Import({ ExternalDataSource.class, DefaultJpaConfig.class, EclipseLinkOrmConfig.class })
 public class ApplicationContext {
 
 }
