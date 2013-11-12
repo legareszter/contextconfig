@@ -21,7 +21,7 @@ public class HibernateOrmConfig implements OrmConfig {
 
     public JpaVendorAdapter vendorAdapter() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        jpaVendorAdapter.setShowSql(true);
+        jpaVendorAdapter.setShowSql(false);
         return jpaVendorAdapter;
     }
 

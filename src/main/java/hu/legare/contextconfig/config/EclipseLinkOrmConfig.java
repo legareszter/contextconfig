@@ -26,7 +26,7 @@ public class EclipseLinkOrmConfig implements OrmConfig {
 
     public JpaVendorAdapter vendorAdapter() {
         EclipseLinkJpaVendorAdapter jpaVendorAdapter = new EclipseLinkJpaVendorAdapter();
-        jpaVendorAdapter.setShowSql(true);
+        jpaVendorAdapter.setShowSql(false);
         jpaVendorAdapter.setDatabasePlatform(DATABASE);
         return jpaVendorAdapter;
     }
